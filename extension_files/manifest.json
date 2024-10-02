@@ -1,0 +1,17 @@
+{
+    "name": "Google Translate Image Extension",
+    "version": "0.1",
+    "manifest_version": 3,
+    "permissions": [
+        "contextMenus", 
+        "clipboardWrite",  
+        "scripting"
+    ],
+    "background": {
+        "service_worker": "background.js"
+    },
+    "host_permissions": ["*://*/*"],
+    "icons": {
+        "16": "Google_Translate_logo.png"
+    }
+}
