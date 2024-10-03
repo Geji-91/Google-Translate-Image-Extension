@@ -13,7 +13,7 @@ The first few updates will provide the initial functionality. 1.0 will be when t
 
 ## Implementation Notes
 
-Currently, this tool will only be available as a Chrome test extension from this repo. Eventually, I hope to make this into a legitimate extension or to pressure Google to make its own access of Google Translate more convienient, but that is a long term goal.
+Currently, this tool will only be available as a Chrome test extension from this repo. Eventually, I hope to make this into a legitimate extension or to pressure Google to make its own access of Google Translate more convienient, but that is a long term goal. Right now you can choose whether to open google translate in a new tab or the same tab in the code itself. Eventually I'll add an extension dropdown to hold this and other settings. 
 
 ## Running this extension
 

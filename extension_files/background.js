@@ -37,8 +37,24 @@ async function copyImageToClipboard(imageUrl) {
     const item = new ClipboardItem({ [blob.type]: blob });
     await navigator.clipboard.write([item]);
     console.log("Image copied to clipboard!");
+
+    //Calls to open Google Translate
+    chrome.runtime.sendMessage({ action: "openTranslate" });
   
   } catch (err) {
     console.error("Failed to copy image:", err);
   }
 }  
+
+// Listener to open Google Translate in a new tab
+chrome.runtime.onMessage.addListener((message) => {
+  if (message.action === "openTranslate") {
+    //opens Google Translate in a new tab
+    chrome.tabs.create({ url: "https://translate.google.com/?hl=en&sl=auto&tl=en&op=images" });
+
+    //opens Google Translate in the current tab
+    /*chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
+      chrome.tabs.update(tabs[0].id, {url: "https://translate.google.com/?hl=en&sl=auto&tl=en&op=images"});
+    });*/
+  }
+});
