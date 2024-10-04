@@ -103,12 +103,45 @@ chrome.contextMenus.onClicked.addListener((info, tab) => {
 // Listener to open Google Translate in a new tab
 chrome.runtime.onMessage.addListener((message) => {
   if (message.action === "openTranslate") {
-    //opens Google Translate in a new tab
-    chrome.tabs.create({ url: "https://translate.google.com/?hl=en&sl=auto&tl=en&op=images" });
+    //variable for new tab or current tab
+    const newTab = true;
 
-    //opens Google Translate in the current tab
-    /*chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
-      chrome.tabs.update(tabs[0].id, {url: "https://translate.google.com/?hl=en&sl=auto&tl=en&op=images"});
-    });*/
+    if(newTab){
+      //opens Google Translate in a new tab
+      chrome.tabs.create({ url: "https://translate.google.com/?hl=en&sl=auto&tl=en&op=images" });
+    } else {
+      //opens Google Translate in the current tab
+      chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
+        chrome.tabs.update(tabs[0].id, {url: "https://translate.google.com/?hl=en&sl=auto&tl=en&op=images"});
+      });
+    }
+
+    console.log("Opened Google Translate");
   }
 });
+
+//listener to activate translation upon the opening of Google Translate 
+chrome.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
+  if (changeInfo.status === 'complete' && tab.url.includes('translate.google.com')) {
+    chrome.scripting.executeScript({
+      target: { tabId: tabId },
+      func: translateImage
+    });
+  } else {
+    console.log("Call requirements not met");
+  }
+});
+
+//clicks the "paste from clipboard" button
+async function translateImage(){
+  // Find the "Paste from clipboard" button
+  const pasteButton = document.querySelector('button[aria-label="Paste an image from clipboard"]');
+
+  //if it exists, click the button
+  if (pasteButton) {
+    pasteButton.click();
+    console.log("Clicked 'Paste from clipboard' button.");
+  } else {
+    console.log("'Paste from clipboard' button not found.");
+  }
+};

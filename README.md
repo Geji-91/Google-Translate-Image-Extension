@@ -9,7 +9,7 @@ While there are paid services, PCs are currently lacking in free do-it-yourself 
 
 This extension aims to improve upon the depreciating "Search images with Google" and create a non-predatory open source alternative to paid automatic translation services. It adds a new context menu item called "Translate image with Google". Clicking this item automatically copy the image in question, open Google Translate, and feed the image to be translated in one step. This will significantly improve the ease of use for Google Translating images, and spirutally succeed and improve upon the existant "Search image with Google" context menu item. 
 
-The first few updates will provide the initial functionality. 1.0 will be when the functionality above has been completed. After that, I want to try to add a few more advanced features, such as the ability to translate images in-page and availability in multiple browsers. I want all of these to run from the extension, and not require an external server or fee for use. I hope that this tool will be valueable for the manga community and help to grow less popular titles via greater access. 
+Now that the initial functionality is complete, the next few updates should provide some quality of life improvements, such as the ability to translate images in-page and availability in multiple browsers. I want all of these to run from the extension, and not require an external server or fee for use. I hope that this tool will be valueable for the manga community and help to grow less popular titles via greater access. 
 
 ## Implementation Notes
 
